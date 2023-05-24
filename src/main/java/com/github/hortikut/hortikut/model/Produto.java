@@ -1,9 +1,16 @@
-package com.hortykut.hortykut.model;
+package com.github.hortikut.hortikut.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@Table (name = "tb_produto")
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,6 +57,6 @@ public class Produto {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
-    private com.hortykut.hortykut.model.Categoria categoria;
+    private Categoria categoria;
 }
 
