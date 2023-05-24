@@ -2,6 +2,7 @@ package com.github.hortykut.hortykut.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.github.hortykut.hortykut.model.Produto;
 import com.github.hortykut.hortykut.repository.ProdutoRepository;
 import java.util.List;
 import java.util.Optional;
