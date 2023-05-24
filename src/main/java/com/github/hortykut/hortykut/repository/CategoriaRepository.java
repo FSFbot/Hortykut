@@ -1,4 +1,4 @@
-package com.github.hortikut.hortikut.repository;
+package com.github.hortykut.hortykut.repository;
 
 import com.hortykut.hortykut.model.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -6,4 +6,3 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
 }
-

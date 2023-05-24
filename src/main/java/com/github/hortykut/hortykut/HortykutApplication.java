@@ -1,13 +1,12 @@
-package com.github.hortikut.hortikut;
+package com.github.hortykut.hortykut;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HortikutApplication {
+public class HortykutApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HortikutApplication.class, args);
+        SpringApplication.run(HortykutApplication.class, args);
     }
-
 }

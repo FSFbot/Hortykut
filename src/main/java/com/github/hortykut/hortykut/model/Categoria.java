@@ -1,13 +1,13 @@
-package com.hortykut.hortykut.model;
+package com.github.hortykut.hortykut.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-
 import java.util.List;
 
 @Entity
 public class Categoria {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,12 +36,13 @@ public class Categoria {
         Frutos = frutos;
     }
 
-    @NotBlank(message = "Este campo é obrigatorio por favor coloque uma mensagem")
+    @NotBlank(message = "Este campo é obrigatório, por favor coloque uma mensagem")
     private String Semente;
 
-    @NotBlank(message = "Este campo é obrigatorio por favor coloque uma mensagem")
+    @NotBlank(message = "Este campo é obrigatório, por favor coloque uma mensagem")
     private String Frutos;
+    
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("categoria")
-    private List<com.hortykut.hortykut.model.Produto> produtos;
+    private List<Produto> produtos;
 }

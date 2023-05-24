@@ -1,10 +1,11 @@
-package com.hortykut.hortykut.model;
+package com.github.hortykut.hortykut.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Produto {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -50,6 +51,5 @@ public class Produto {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
-    private com.hortykut.hortykut.model.Categoria categoria;
+    private Categoria categoria;
 }
-
