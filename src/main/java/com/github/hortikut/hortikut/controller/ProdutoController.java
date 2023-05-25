@@ -1,5 +1,6 @@
 package com.github.hortikut.hortikut.controller;
 
+import com.github.hortikut.hortikut.model.Produto;
 import com.github.hortikut.hortikut.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,23 +14,23 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository produtoRepository ;
     @GetMapping
-    public List<com.hortykut.hortykut.model.Produto> listarUsuarios() {
+    public List<Produto> listarUsuarios() {
         return produtoRepository.findAll();
     }
     @GetMapping("/{id}")
-    public Optional<com.hortykut.hortykut.model.Produto> buscarProdutoPorId(@PathVariable Long id) {
+    public Optional<Produto> buscarProdutoPorId(@PathVariable Long id) {
       return produtoRepository.findById(id);
     }
     @PostMapping
-    public com.hortykut.hortykut.model.Produto criarProduto(@RequestBody com.hortykut.hortykut.model.Produto produto){
+    public Produto criarProduto(@RequestBody Produto produto){
         return produtoRepository.save(produto);
     }
     @PutMapping("/{id}")
-    public com.hortykut.hortykut.model.Produto atualizarProduto(@PathVariable Long id, @RequestBody com.hortykut.hortykut.model.Produto produtoAtualizado) {
-        Optional<com.hortykut.hortykut.model.Produto> produtoExistente = produtoRepository.findById(id);
+    public Produto atualizarProduto(@PathVariable Long id, @RequestBody Produto produtoAtualizado) {
+        Optional<Produto> produtoExistente = produtoRepository.findById(id);
 
         if (produtoExistente.isPresent()) {
-            com.hortykut.hortykut.model.Produto produto = produtoExistente.get();
+        	Produto produto = produtoExistente.get();
             produto.setConexao(produtoAtualizado.getConexao());
             produto.setMentorias(produtoAtualizado.getMentorias());
             produto.setCursos(produtoAtualizado.getCursos());

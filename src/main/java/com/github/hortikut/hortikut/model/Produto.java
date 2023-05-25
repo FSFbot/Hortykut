@@ -1,9 +1,10 @@
-package com.hortykut.hortykut.model;
+package com.github.hortikut.hortikut.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "tb_produto")
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,7 @@ public class Produto {
 
     public Long getId() {
         return id;
+        
     }
 
     public void setId(Long id) {
@@ -47,9 +49,31 @@ public class Produto {
     public void setCursos(String cursos) {
         Cursos = cursos;
     }
+    
+    public Categoria getCategoria() {
+		return categoria;
+	}
 
-    @ManyToOne
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+
+
+	@ManyToOne
     @JoinColumn(name = "categoria_id")
-    private com.hortykut.hortykut.model.Categoria categoria;
+    private Categoria categoria;
+    
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 }
 

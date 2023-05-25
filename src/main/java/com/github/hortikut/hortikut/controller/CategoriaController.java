@@ -1,5 +1,6 @@
 package com.github.hortikut.hortikut.controller;
 
+import com.github.hortikut.hortikut.model.Categoria;
 import com.github.hortikut.hortikut.repository.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,24 +15,24 @@ public class CategoriaController {
     private CategoriaRepository categoriaRepository;
 
     @GetMapping
-    public List<com.hortykut.hortykut.model.Categoria> listaCategorias(){
+    public List<Categoria> listaCategorias(){
         return categoriaRepository.findAll();
     }
     @GetMapping("/{id}")
-    public Optional<com.hortykut.hortykut.model.Categoria> buscarCategoriaPorId(@PathVariable Long id){
+    public Optional<Categoria> buscarCategoriaPorId(@PathVariable Long id){
         return categoriaRepository.findById(id);
     }
     @PostMapping
-    public com.hortykut.hortykut.model.Categoria criarCategoria(@RequestBody com.hortykut.hortykut.model.Categoria categoria){
+    public Categoria criarCategoria(@RequestBody Categoria categoria){
         return categoriaRepository.save(categoria);
     }
     @PutMapping("/{id}")
-    public com.hortykut.hortykut.model.Categoria atualizarCategoria(@PathVariable Long id, @RequestBody com.hortykut.hortykut.model.Categoria categoriaAtualizada) {
-        Optional<com.hortykut.hortykut.model.Categoria> categoriaExistente = categoriaRepository.findById(id);
+    public Categoria atualizarCategoria(@PathVariable Long id, @RequestBody Categoria categoriaAtualizada) {
+        Optional<Categoria> categoriaExistente = categoriaRepository.findById(id);
 
         if(categoriaExistente.isPresent()) {
-            com.hortykut.hortykut.model.Categoria categoria = categoriaExistente.get();
-            categoria.setSemente(categoriaAtualizada.getSemente());
+        	Categoria categoria = categoriaExistente.get();
+            categoria.setDescricao(categoriaAtualizada.getDescricao());
             return categoriaRepository.save(categoria);
         } else {
             throw new IllegalArgumentException("ID da categoria inválido: " + id);
